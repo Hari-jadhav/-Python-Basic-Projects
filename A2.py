@@ -1,31 +1,33 @@
-def manage_marks():
-    marks = []
+def analyze_string(s):
+    # Check for empty string
+    if len(s) == 0:
+        print("String is empty.")
+        return
 
-    print("Enter marks of 5 subjects:")
+    # Length
+    print("Length:", len(s))
 
-    while len(marks) < 5:
-        try:
-            mark = float(input(f"Subject {len(marks)+1}: "))
+    # Reverse
+    print("Reverse String:", s[::-1])
 
-            if mark < 0 or mark > 100:
-                print("Marks should be between 0 and 100.")
-                continue
+    # Count vowels
+    vowels = "aeiou"
+    count = 0
 
-            marks.append(mark)
+    for ch in s.lower():
+        if ch in vowels:
+            count += 1
 
-        except ValueError:
-            print("Please enter numeric values only.")
+    print("Total Vowels:", count)
 
-    average = sum(marks) / len(marks)
+    # Print characters with positive and negative index
+    print("\nCharacter\tPositive Index\tNegative Index")
 
-    print("\nMarks List:", marks)
-    print("Average Marks:", average)
-    print("Highest Marks:", max(marks))
-    print("Lowest Marks:", min(marks))
-
-    marks.sort(reverse=True)
-
-    print("Marks in Descending Order:", marks)
+    for i in range(len(s)):
+        print(s[i], "\t\t", i, "\t\t", i - len(s))
 
 
-manage_marks()
+# User Input
+text = input("Enter a string: ")
+
+analyze_string(text)
